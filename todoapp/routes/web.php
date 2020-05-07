@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sample', function () {
+    return view('sample');
+});
+
 
 Route::get('/folders/create', 'FolderController@create')->name('folders.create');
 Route::post('/folders/create', 'FolderController@store')->name('folders.store');

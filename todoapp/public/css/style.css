@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+html{
+    font-size: 90.5%;
+}
+
+body{
+    color: #333;
+    font-size: 1.6rem;
+    background-image: url("/delivery_service_app/todoapp/public/images/eimi1.jpg"); 
+    
+    background-size: cover;
+    padding-top: 70.17%;
+    background-repeat: no-repeat;
+    background-color: pink;
+}
+
+@media only screen and (max-width: 290px){
+    body{
+        background-size: 200%;
+    }
+}
