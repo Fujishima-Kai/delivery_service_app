@@ -25,13 +25,17 @@ Route::get('/sample', function () {
 Route::get('/folders/create', 'FolderController@create')->name('folders.create');
 Route::post('/folders/create', 'FolderController@store')->name('folders.store');
 
-
 Route::get('/folders/{folder_id}/tasks', 'TaskController@index')->name('tasks.index');
+
+Route::get('/folders/{folder_id}/tasks/{task_id}/show', 'TaskController@show')->name('tasks.show');
 
 Route::get('/folders/{folder_id}/tasks/create', 'TaskController@create')->name('tasks.create');
 Route::post('/folders/{folder_id}/tasks/create', 'TaskController@store')->name('tasks.store');
 
 Route::get('/folders/{folder_id}/tasks/{task_id}/edit', 'TaskController@edit')->name('tasks.edit');
-Route::post('/folders/{folder_id}/tasks/{task_id}/edit', 'TaskController@update');
+Route::post('/folders/{folder_id}/tasks/{task_id}/edit', 'TaskController@update')->name('tasks.update');
 
-Route::post('/folders/{folder_id}/tasks/{task}', 'TaskController@delete')->name('tasks.delete');
+Route::post('{task_id}/delete', 'TaskController@delete')->name('tasks.delete');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

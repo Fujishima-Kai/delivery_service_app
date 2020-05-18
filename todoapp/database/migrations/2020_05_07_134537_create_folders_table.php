@@ -16,7 +16,10 @@ class CreateFoldersTable extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
             $table->string('title', 20);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,5 +31,6 @@ class CreateFoldersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('folders');
+        $table->dropColumn('user_id');
     }
 }
