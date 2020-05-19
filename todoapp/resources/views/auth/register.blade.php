@@ -2,10 +2,37 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="row">
+      <div class="col col-md-offset-3 col-md-6">
+        <nav class="panel panel-default">
+                        @guest
+                            
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                            
+                            @if (Route::has('register'))
+                                
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('新規登録') }}</a>
+                                
+                            @endif
+                        @else
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -54,7 +81,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワード（確認用）') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワード（確認）') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -76,11 +103,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="is_manager" class="col-md-4 col-form-label text-md-right">{{ __('Hacker?') }}</label>
+                            <label for="is_manager" class="col-md-4 col-form-label text-md-right">{{ __('管理者権限') }}</label>
 
                             <div class="col-md-6">
-                                <input id="is_manager" type="radio" name="is_manager" value=1 checked="checked">Yes
-                                <input id="is_manager" type="radio" name="is_manager" value=0>No
+                                <input id="is_manager" type="radio" name="is_manager" value=1 checked="checked">ある
+                                <input id="is_manager" type="radio" name="is_manager" value=0>ない
                                 @error('is_manager')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -96,7 +123,9 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </form>
+           </div>
+       </nav>
         </div>
     </div>
 </div>

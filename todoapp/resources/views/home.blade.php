@@ -8,17 +8,6 @@
           <div class="panel-heading">
             まずはフォルダを作成しましょう
           </div>
-          <div class="panel-body">
-            <div class="text-center">
-              <a href="{{ route('tasks.index', ['folder_id' => $folder->id]) }}" class="btn btn-primary">
-                フォルダ作成ページへ
-              </a>
-              <a href="{{ route('register') }}" class="btn btn-primary">
-                フォルダ作成ページへ
-              </a>
-              <a href="{{ route('logout') }}" class="btn btn-primary">
-                フォルダ作成ページへ
-              </a>
             </div>
           </div>
           <ul class="navbar-nav ml-auto">
@@ -56,4 +45,9 @@
       </div>
     </div>
   </div>
+  </div>
+       </nav>
+    </div>
+  </div>
+</div>          
 @endsection

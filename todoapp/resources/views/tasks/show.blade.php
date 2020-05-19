@@ -32,29 +32,29 @@
               <div class="form-group">
                 <label for="pending_time">保留時間</label>
                  <p>  <?php if (is_int($task->pending_time) == false && $task->pending_time == null){
-                                echo "まだ取り掛かってない作業があるみたい、、、";
+                                echo "まだ取り掛かってないタスクがあるよ、、、";
                             }
-                            if ($task->pending_time >= 3){
-                                echo $task->pending_time . "時間でようやくスタート、、、ここから巻き返そう！";
+                            if ($task->pending_time >= 1){
+                                echo "作業保留時間が" . $task->pending_time . "時間あったよ";
                             }
-                            if (is_int($task->pending_time) == true && $task->pending_time < 3){
-                                echo $task->pending_time . "時間でタスク開始！いいペースだね★";
+                            if (is_int($task->pending_time) == true && $task->pending_time < 1){
+                                echo "1時間以内に着手出来たよ！";
                             }
                   ?> </p>
               </div>
               <div class="form-group">
                 <label for="work_time">作業時間</label>
                  <p>  <?php if (is_int($task->work_time) == true && $task->work_time == null){
-                                echo "お仕事、早く終わるといいね、、、";
+                                echo "まだ完了していないタスクがあるよ、、、";
                             }
                             if ($task->work_time > 6){
-                                echo $task->work_time . "時間もかかっちゃったね。難しいお仕事だったのかな、、、？";
+                                echo "完了までに" . $task->work_time . "時間かかってしまったよ";
                             }
-                            if ($task->work_time < 6 && $task->work_time > 3){
-                                echo $task->work_time . "時間のお仕事お疲れ様！順調なペースだったよ★";
+                            if ($task->work_time < 6 && $task->work_time >= 1){
+                                echo "完了までに" . $task->work_time . "時間だったよ。";
                             }
-                            if (is_int($task->work_time) == true && $task->work_time < 3){
-                                echo $task->work_time . "時間で達成だね！お疲れ様☆";
+                            if (is_int($task->work_time) == true && $task->work_time < 1){
+                                echo "1時間以内にタスク完了できたよ！";
                             }
                   ?> </p>
               </div>
