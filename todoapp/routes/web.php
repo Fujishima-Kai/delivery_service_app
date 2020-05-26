@@ -35,7 +35,10 @@ Route::post('/folders/{folder_id}/tasks/create', 'TaskController@store')->name('
 Route::get('/folders/{folder_id}/tasks/{task_id}/edit', 'TaskController@edit')->name('tasks.edit');
 Route::post('/folders/{folder_id}/tasks/{task_id}/edit', 'TaskController@update')->name('tasks.update');
 
-Route::post('{task_id}/delete', 'TaskController@delete')->name('tasks.delete');
+// 行頭の/を追加し、$を削除
+Route::post('/{task_id}/delete', 'TaskController@delete')->name('tasks.delete');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

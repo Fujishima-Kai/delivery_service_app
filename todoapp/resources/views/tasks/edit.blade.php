@@ -69,6 +69,7 @@
     </div>
   </div>
 @endsection
+
 @section('scripts')
   @include('share.flatpickr.scripts')
 @endsection

@@ -11,8 +11,7 @@
         <nav class="panel panel-default">
           <div class="panel-heading">タスク詳細を表示する</div>
           <div class="panel-body">
-            <form>
-              @csrf
+            <!-- <form>//formが悪さをしていたみたいなので、14行目からのformをコメントアウト -->
               <div class="form-group">
                 <label for="title">タイトル</label>
                 <p>  {{ $task->title }} </p>
@@ -60,17 +59,17 @@
               </div>
               <div class="form-group">
                 <label for="assigner_id">クライアント</label>
-                <p>  {{ $task->assigner_id }} </p>
+                <p>  {{ $user->name }} </p>
               </div>
               <div class="text-right">
                 <input type="button" class="btn btn-primary" onclick="history.back()" value="戻る">
-               <!-- <form method="post" action="#">
-                @csrf
-                  <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'> -->
-                </form>
-                </form>
+                <!-- actionに波カッコがついていなかったので追加 -->
+                <form method="post" action="{{ route('tasks.delete', [$task->id]) }}">
+               {{ csrf_field() }}
+                  <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("本当に削除しますか？");'>
+               </form>
               </div>
-            </form>
+            <!-- </form>//formが悪さをしていたみたいなので、14行目からのformをコメントアウト -->
           </div>
         </nav>
       </div>

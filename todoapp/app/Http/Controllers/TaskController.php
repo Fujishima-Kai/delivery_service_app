@@ -31,9 +31,10 @@ class TaskController extends Controller
     public function show(int $folder_id, int $task_id)
     {
         $task = Task::find($task_id);
-        
+        $user = User::find($task->assigner_id);
         return view('tasks.show', [
             'task' => $task,
+            'user' => $user,
             'task_id' => $task->id,
         ]);
     }
@@ -109,12 +110,14 @@ class TaskController extends Controller
         ]);
     }
 
-    public function delete(int $folder_id, int $task_id)
+    public function delete(Request $request, int $task_id)
     {
-        dd($task_id);
         $task = Task::find($task_id);
+        $current_folder_id = $task->folder_id;
         $task->delete();
-        return redirect();
+        return redirect()->route('tasks.index', [
+            'folder_id' => $current_folder_id,
+        ]);
     }
 
 
